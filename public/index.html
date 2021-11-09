@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monk</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+</head>
+<body>
+    <div id="gui" ng-app="GUI" ng-controller="GUIController">
+      <div class="heading">audio from</div>
+      <div class="main-data">{{audioSourceName}}</div>
+      <section>
+        <div class="heading">fft buffer size</div>
+        <div class="main-data">{{bufferSize}}</div>
+      </section>
+      <section>
+        <div id="midi-heading" class="heading">
+          midi devices <button type="button" name="button" id="reload" ng-click="reload()">refresh</button>
+        </div>
+        <ul id="midi-devices-list">
+          <div ng-if="!midiDevices">no midi device detected</div>
+            <li ng-repeat="(key, device) in midiDevices">
+              <span class="main-data">{{device}}</span> <span class="numbers">{{notes[key]}} {{velocities[key]}}</span>
+            </li>
+        </ul>
+      </section>
+    </div>
+    <img src="../icon.png" id="logo" />
+    <script src="js/main.js"></script>
+</body>
+</html>
